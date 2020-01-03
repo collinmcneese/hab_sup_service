@@ -2,8 +2,20 @@
 results/
 
 
-# Created by https://www.gitignore.io/api/rust,ruby,linux,macos,windows,visualstudiocode
-# Edit at https://www.gitignore.io/?templates=rust,ruby,linux,macos,windows,visualstudiocode
+
+# Created by https://www.gitignore.io/api/rust,ruby,linux,macos,windows,chefcookbook,visualstudiocode
+# Edit at https://www.gitignore.io/?templates=rust,ruby,linux,macos,windows,chefcookbook,visualstudiocode
+
+### ChefCookbook ###
+.vagrant
+/cookbooks
+
+# Bundler
+bin/*
+.bundle/*
+
+.kitchen/
+.kitchen.local.yml
 
 ### Linux ###
 *~
@@ -155,4 +167,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.gitignore.io/api/rust,ruby,linux,macos,windows,visualstudiocode
+# End of https://www.gitignore.io/api/rust,ruby,linux,macos,windows,chefcookbook,visualstudiocode

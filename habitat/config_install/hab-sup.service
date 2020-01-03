@@ -1,0 +1,15 @@
+[Unit]
+Description=Habitat-Supervisor
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=-/bin/rm -f /hab/sup/default/LOCK
+ExecStart=/bin/hab sup run
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=262144
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target

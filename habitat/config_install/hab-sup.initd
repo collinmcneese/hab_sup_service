@@ -1,0 +1,109 @@
+### BEGIN INIT INFO
+# Provides:           hab-sup
+# Required-Start:     $remote_fs $network
+# Required-Stop:      $remote_fs $network
+# Default-Start:      2 3 4 5
+# Default-Stop:       0 1 6
+# Short-Description:  The Habitat Supervisor
+# Description:
+#  Manages the Habitat supervisor process.
+### END INIT INFO
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+
+NAME=hab-sup
+DESC="Habitat Supervisor"
+HAB=/bin/hab
+OPTIONS=""
+PIDFILE=/var/run/$NAME.pid
+
+. /etc/init.d/functions
+
+if [ ! -x $HAB ]; then
+  echo "$HAB not present or not executable"
+  failure
+  exit 1
+fi
+
+pid() {
+  pidofproc -p $PIDFILE
+}
+
+running() {
+  hab sup stat >/dev/null 2>&1
+  return $?
+}
+
+start() {
+  nohup hab sup run >/var/log/hab-sup.$(date +%Y%m%d).log 2>&1 &
+  return $?
+}
+
+stop() {
+  hab sup term >/dev/null 2>&1
+  return $?
+}
+
+case "$1" in
+  start)
+    echo "Starting $DESC" "$NAME"
+    if running; then
+      echo "already running"
+      success
+      exit 0
+    else
+      start
+      resp=$?
+      success || failure
+      exit $resp
+    fi
+    ;;
+  stop)
+    echo "Stopping $DESC" "$NAME"
+    if running; then
+      stop
+      resp=$?
+      success || failure
+      exit $resp
+    else
+      echo "already stopped"
+      success
+      exit 0
+    fi
+    ;;
+  restart)
+    echo "Restarting $DESC" "$NAME"
+    if running; then
+      stop
+      resp=$?
+      if [ $resp = 0 ]; then
+        sleep 2
+      else
+        echo "failed to stop"
+        failure
+        exit $resp
+      fi
+    fi
+    start
+    resp=$?
+    if [ $resp = 0 ]; then
+      echo "Service $NAME has been restarted "
+      success
+    else
+      echo "Failed to start $NAME"
+      failure
+    fi
+    exit $resp
+    ;;
+  status)
+    hab sup stat
+    success || failure
+    exit $?
+    ;;
+  *)
+    echo "Usage: $0 $NAME {start|stop|restart|status}"
+    exit 1
+    ;;
+esac
+
+exit 0
