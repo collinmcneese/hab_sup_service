@@ -32,8 +32,8 @@ hab pkg build .
 source /tmp/habitat/results/last_build.env || . /tmp/habitat/results/last_build.env
 
 # Install package
-echo "Installing ${pkg_artifact}"
-hab pkg install /tmp/habitat/results/${pkg_artifact}
+# echo "Installing ${pkg_artifact}"
+# hab pkg install /tmp/habitat/results/${pkg_artifact}
 # bootstrapfile='/tmp/habitat/results/bootstrap.json'
 
 # echo "{\"bootstrap_mode\": \"true\"}" > ${bootstrapfile}

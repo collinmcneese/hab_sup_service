@@ -34,8 +34,9 @@ then
   cp {{pkg.svc_config_install_path}}/hab-sup.initd /etc/init.d/hab-sup
   chmod +x /etc/init.d/hab-sup
   ## Enable service
-  service hab-sup start
   chkconfig hab-sup on
+  echo "hab-sup service has been installed!"
+  echo "Start the Habitat supervisor with command 'sudo service hab-sup start'"
   exit 0
 else
   echo "not using systemd or initd under standard paths, exiting"
