@@ -1,6 +1,6 @@
 pkg_name=hab_sup_service
 pkg_origin=collinmcneese
-pkg_version="0.1.0"
+pkg_version="0.1.1"
 pkg_maintainer="Collin McNeese <cmcneese@chef.io>"
 pkg_license=("Apache-2.0")
 pkg_deps=(core/glibc)
