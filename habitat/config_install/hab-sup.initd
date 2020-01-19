@@ -35,7 +35,7 @@ running() {
 }
 
 start() {
-  nohup hab sup run >/var/log/hab-sup.$(date +%Y%m%d).log 2>&1 &
+  hab sup run 2>&1 | logger -t "$(basename $0)" &
   return $?
 }
 
