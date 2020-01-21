@@ -5,7 +5,6 @@ Creates service for Chef Habitat supervisor.
 ## Supports
 
 * Linux (init.d or systemd), kernel 2+.
-* TODO:Windows Server
 
 ## Usage
 
