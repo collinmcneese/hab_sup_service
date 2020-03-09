@@ -11,3 +11,5 @@ Creates service for Chef Habitat supervisor.
 Package can be installed via `hab pkg install` command and contains install run hook which will create service configurations, start the service and enable for automatic start on boot.
 
 This package contains a `pkg_svc_run` command only so that installtion will execute as correct package user, `root`.  This package should not be loaded as a service as it performs no regular functions after installation.
+
+TODO: Add support for supervisor options such as secret, ring, etc.
