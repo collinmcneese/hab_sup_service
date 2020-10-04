@@ -18,3 +18,12 @@ control 'service checks' do
     end
   end
 end
+
+control 'supervisor config toml' do
+  impact 0.1
+  title 'Verify that Habitat Supervisor config toml is present'
+  # http://inspec.io/docs/reference/resources/file/
+  describe file('/hab/sup/default/config/sup.toml') do
+    it { should exist }
+  end
+end

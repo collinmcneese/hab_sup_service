@@ -41,3 +41,11 @@ then
 else
   echo "not using systemd or initd under standard paths, exiting"
 fi
+
+# Verify that Supervisor config file is present
+if [ ! -f /hab/sup/default/config/sup.toml ]
+then
+  echo 'Attempting to create /hab/sup/default/config/sup.toml'
+  mkdir -p /hab/sup/default/config
+  hab sup run --generate-config > /hab/sup/default/config/sup.toml  ; echo 'Supervisor config file created.' || echo 'Could not generate config file.'
+fi

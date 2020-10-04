@@ -12,4 +12,5 @@ Package can be installed via `hab pkg install` command and contains install run 
 
 This package contains a `pkg_svc_run` command only so that installtion will execute as correct package user, `root`.  This package should not be loaded as a service as it performs no regular functions after installation.
 
+Upon installation, will check for the presence of `/hab/sup/default/config/sup.toml` and create if missing.
 TODO: Add support for supervisor options such as secret, ring, etc.
