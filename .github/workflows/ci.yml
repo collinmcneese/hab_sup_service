@@ -1,0 +1,25 @@
+name: hab_sup_service CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Code
+      uses: actions/checkout@v2
+    - name: Install Chef Habitat
+      uses: collinmcneese/chef-habitat-install@master
+    - name: Build and Install
+      run: |
+        hab origin key generate
+        hab pkg build .
+        . results/last_build.env
+        hab pkg install results/$pkg_artifact
+      env:
+        HAB_LICENSE: accept-no-persist
+        HAB_ORIGIN: collinmcneese
