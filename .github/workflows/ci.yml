@@ -19,7 +19,7 @@ jobs:
         hab origin key generate
         hab pkg build .
         . results/last_build.env
-        hab pkg install results/$pkg_artifact
+        sudo hab pkg install results/$pkg_artifact
       env:
         HAB_LICENSE: accept-no-persist
         HAB_ORIGIN: collinmcneese
