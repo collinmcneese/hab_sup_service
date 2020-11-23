@@ -13,7 +13,7 @@ jobs:
     - name: Check Out Code
       uses: actions/checkout@v2
     - name: Install Chef Habitat
-      uses: collinmcneese/chef-habitat-install@master
+      uses: collinmcneese/chef-habitat-install@main
     - name: Build and Install
       run: |
         hab origin key generate
