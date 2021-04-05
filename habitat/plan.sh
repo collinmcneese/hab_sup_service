@@ -1,6 +1,6 @@
 pkg_name=hab_sup_service
 pkg_origin=collinmcneese
-pkg_version="1.6.181"
+pkg_version="1.6.267"
 pkg_maintainer="Collin McNeese <cmcneese@chef.io>"
 pkg_license=("Apache-2.0")
 pkg_deps=(core/hab-sup)
