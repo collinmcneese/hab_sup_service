@@ -19,10 +19,9 @@ then
   ## Enable systemd unit
   systemctl enable hab-sup
   systemctl start hab-sup
-  exit 0
 elif [ -d /etc/init.d ]
 then
-  echo "Installing Chef Habitat service using"
+  echo "Installing Chef Habitat service using {{pkg.svc_config_install_path}}/hab-sup.initd"
   ## Make sure there is not already a unit configured
   if [[ $(grep -qr 'hab sup' /etc/init.d) ]]
   then
@@ -37,7 +36,6 @@ then
   chkconfig hab-sup on
   echo "hab-sup service has been installed!"
   echo "Start the Habitat supervisor with command 'sudo service hab-sup start'"
-  exit 0
 else
   echo "not using systemd or initd under standard paths, exiting"
 fi

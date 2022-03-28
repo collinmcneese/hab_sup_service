@@ -2,16 +2,15 @@
 driver:
   name: vagrant
   synced_folders:
-   - ['.', '/tmp/habitat']
+    - ['.', '/tmp/habitat']
 
 provisioner:
   name: shell
   script: 'test/scripts/bootstrap.sh'
 
 platforms:
-  - name: ubuntu-19.10
-  - name: centos-8
-  - name: centos-6
+  - name: ubuntu-20.04
+  - name: almalinux-8
 
 verifier:
   name: inspec

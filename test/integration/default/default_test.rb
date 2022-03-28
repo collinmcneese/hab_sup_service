@@ -1,8 +1,5 @@
 # InSpec test for hab_sup_service Chef Habitat package
 
-# The InSpec reference, with examples and extensive documentation, can be
-# found at https://www.inspec.io/docs/reference/resources/
-
 control 'service checks' do
   impact 0.1
   title 'Check for creation of service.'
